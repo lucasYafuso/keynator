@@ -1,0 +1,25 @@
+<%- layout('/layouts/boilerplate.ejs') %>
+    <link rel="stylesheet" href="/stylesheets/account.css">
+    <div class="background">
+        <% for( let i=0; i < 140; i++ ) { %>
+            <div class="dot" style="--r:<%= Math.floor(Math.random()*100) %>"></div>
+            <% } %>
+    </div>
+    <main class="d-flex flex-column align-items-center p-5">
+        <h1>
+            <%= currentUser.username %>
+        </h1>
+        <h2 class="highscore mt-2 text-center">Highscore</h2>
+        <p class="highscore">points: <%= currentUser.highscore %>-WPM: <%= currentUser.highscore*2 %>
+        </p>
+        
+
+        <h3>Last Scores</h3>
+        <ul class="p-0 mb-1">
+            <% for( let scores of currentUser.lastScores.reverse()) { %>
+                <li class="">
+                   points: <%= scores.score %>/WPM: <%= scores.score*2 %>--<%= scores.language %>
+                </li>
+                <% } %>
+        </ul>
+    </main>

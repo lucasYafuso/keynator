@@ -1,0 +1,29 @@
+<%- layout('/layouts/boilerplate.ejs') %>
+    <link rel="stylesheet" href="/stylesheets/play.css">
+    <main class="container d-flex flex-column align-items-center justify-content-center">
+        <button class="start align-self-center mb-4">Start</button>
+        <ul>
+            <li class="mb-1">press 'Enter' or 'Space' to move to the next word</li>
+            <li class="mb-1">wrong words does not give points</li>
+            <li class="mb-1">you have 30 seconds to write as much words as you can</li>
+        </ul>
+
+        <div class="d-flex flex-column align-items-center justify-content-evenly flex-md-row" id="words">
+            <div class="firstWordDiv">
+                <h1 id="firstWord"></h1>
+            </div>
+            <h2 class="m-2"></h2>
+            <h3 class="m-2"></h3>
+        </div>
+        <input type="text" name="text" id="text" autocomplete="off" autofocus spellcheck='false' autocorrect='off'>
+        <h3 id="points">puntaje:0</h3>
+        <div id="countdown">
+            <div class="values"></div>
+        </div>
+    </main>
+    <script>
+        const lang = <%- JSON.stringify(lang) %>
+        const mixedWords = <%- JSON.stringify(mixedWords) %>
+    </script>
+    <script src="/scripts/easyTimer.js"></script>
+    <script src="/scripts/play.js"></script>

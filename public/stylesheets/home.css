@@ -1,0 +1,126 @@
+body{
+    animation: pageLoad 1s;
+}
+.background {
+    z-index: -1;
+    position: fixed;
+    background-color: black;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-evenly;
+}
+
+.dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: aliceblue;
+    animation: downTop 20s linear infinite, showHide 1s linear infinite;
+    animation-duration: calc(600s / var(--r));
+    box-shadow: 0px 0px 13px 5px rgba(255, 255, 255, 1);
+    opacity: 0;
+}
+
+
+@keyframes downTop {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-100vh);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes showHide {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+.glow-on-hover {
+    text-decoration: none;
+    font-size: 3rem;
+    padding: 4px 15px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    animation: pageLoad 1s;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+@keyframes pageLoad {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+label{
+    color: aliceblue;
+}
+#language{
+    border-radius: 5px;
+}
+.langSelect{
+    font-size: 0.9rem;
+}
